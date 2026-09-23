@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Stitch depth, glassmorphism and background effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(195, 198, 213, 0.15); /* Ghost Border */
+}
+
+.hero-pattern {
+  background-color: #faf9fa;
+  background-image: radial-gradient(#d9e2ff 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #094cb2 0%, #3366cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Global background with subtle dot-grid texture */
+body {
+  @apply bg-cream text-on-surface font-body antialiased;
+  background-image: radial-gradient(rgba(0,0,0,0.05) 0.5px, transparent 0.5px);
+  background-size: 12px 12px;
+}
+
+/* Card component styling */
+.card {
+  @apply bg-surface rounded-[20px] shadow-md p-6;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+  @apply text-on-surface font-headline;
+}
+
+/* Subtle gradient for headline text */
+.gradient-headline {
+  background: linear-gradient(135deg, #4A6B4E, #B08D3E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

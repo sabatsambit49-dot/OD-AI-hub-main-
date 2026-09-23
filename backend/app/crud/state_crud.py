@@ -1,0 +1,32 @@
+from sqlalchemy.orm import Session
+from app.models.state import State
+from app.schemas.state import StateCreate, StateUpdate
+
+def get_state(db: Session, state_id: int):
+    return db.query(State).filter(State.id == state_id).first()
+
+def get_states(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(State).offset(skip).limit(limit).all()
+
+def create_state(db: Session, state_in: StateCreate):
+    db_state = State(name=state_in.name)
+    db.add(db_state)
+    db.commit()
+    db.refresh(db_state)
+    return db_state
+
+def update_state(db: Session, state_id: int, state_in: StateUpdate):
+    db_state = get_state(db, state_id)
+    if db_state:
+        db_state.name = state_in.name
+        db.commit()
+        db.refresh(db_state)
+    return db_state
+
+def delete_state(db: Session, state_id: int):
+    db_state = get_state(db, state_id)
+    if db_state:
+        db.delete(db_state)
+        db.commit()
+        return True
+    return False

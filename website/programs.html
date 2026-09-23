@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Programs &amp; Courses – OD AI Academy</title>
+  <meta name="description" content="Explore practical AI, tech, coding, and engineering courses for students, college learners, and career starters in Odisha." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/website/css/style.css" />
+  <style>
+    .prog-header {
+      background: radial-gradient(120% 90% at 75% 40%, var(--accent-mid, #123c93) 0, var(--accent-dark, #0a2260) 45%, #040f2b 100%);
+      color: #fff;
+      padding: 110px clamp(16px, 5vw, 64px) 40px;
+      position: relative;
+      transition: background 0.6s ease;
+    }
+    .hero-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffffff;
+      font: 800 15px 'Plus Jakarta Sans', sans-serif;
+      margin-bottom: 16px;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.22);
+      padding: 9px 20px;
+      border-radius: 99px;
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+      letter-spacing: 0.02em;
+      transition: all 0.25s ease;
+      width: fit-content;
+    }
+    .hero-back-btn:hover {
+      background: #ffffff;
+      color: #040f2b;
+      border-color: #ffffff;
+      transform: translateX(-3px);
+      box-shadow: 0 6px 24px rgba(255, 255, 255, 0.4);
+    }
+    .prog-header .badge-track {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+    .prog-header h1 {
+      font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .prog-header p {
+      color: #c9d6f5;
+      font-size: 16px;
+      max-width: 65ch;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .filter-bar {
+      background: #fff;
+      border-bottom: 1px solid var(--ln);
+      padding: 16px clamp(16px, 4vw, 40px);
+      position: sticky;
+      top: 72px;
+      z-index: 10;
+      box-shadow: 0 4px 16px -8px rgba(6, 26, 69, 0.08);
+    }
+    .filter-container {
+      max-width: 1240px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .program-bar-left {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .current-program-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 99px;
+      background: var(--blue);
+      color: #fff;
+      font: 700 13.5px 'Plus Jakarta Sans', sans-serif;
+      box-shadow: 0 4px 14px -3px rgba(11, 94, 215, 0.4);
+      transition: background 0.3s;
+    }
+    .current-program-badge .badge-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      display: inline-grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .switch-program-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 99px;
+      border: 1.5px solid var(--ln);
+      background: #f8fafc;
+      color: var(--navy);
+      font: 600 13px 'Inter', sans-serif;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .switch-program-link:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: #fff;
+      transform: translateX(-2px);
+    }
+    .search-input-box {
+      position: relative;
+      min-width: 240px;
+    }
+    .search-input-box input {
+      width: 100%;
+      padding: 8px 14px 8px 36px;
+      border-radius: 99px;
+      border: 1.5px solid var(--ln);
+      font-size: 13.5px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input-box input:focus {
+      border-color: var(--blue);
+    }
+    .search-input-box i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--mu);
+      font-style: normal;
+      font-size: 14px;
+    }
+
+    .programs-body {
+      max-width: 1240px;
+      margin: 32px auto 60px;
+      padding: 0 clamp(16px, 4vw, 40px);
+    }
+
+    .group-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    /* Course Card matching Image 2 admin published card */
+    .course-card {
+      background: #fff;
+      border-radius: 16px;
+      border: 1.5px solid var(--ln);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 6px 20px -10px rgba(6, 26, 69, 0.08);
+      transition: transform 0.2s, box-shadow 0.25s, border-color 0.2s;
+      position: relative;
+    }
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px -12px rgba(6, 26, 69, 0.16);
+      border-color: color-mix(in srgb, var(--track-color, var(--blue)) 40%, var(--ln));
+    }
+    .card-top-badges {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .cat-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: color-mix(in srgb, var(--track-color, #0082ff) 14%, #fff);
+      color: var(--track-color, #0082ff);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 99px;
+      background: #e6f9ed;
+      color: #00a352;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .course-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0 0 8px;
+      line-height: 1.3;
+      cursor: pointer;
+    }
+    .course-title:hover {
+      color: var(--blue);
+    }
+    .course-for {
+      display: inline-block;
+      background: #f4f7fd;
+      border: 1px solid var(--ln);
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    .course-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: var(--mu);
+    }
+    .course-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .course-desc {
+      color: var(--mu);
+      font-size: 14px;
+      line-height: 1.55;
+      margin: 0 0 18px;
+      flex: 1;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--ln);
+      margin-top: auto;
+    }
+    .card-pricing b {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .card-pricing s {
+      font-size: 13px;
+      color: var(--mu);
+      margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <nav id="navbar">
+    <a class="lg" href="/" id="brand-link">
+      <img id="lgi" alt="OD AI HUB Logo" width="42" height="42" src="/static/logo.jpg" />
+      <span>OD AI HUB<small>Learn • Build • Innovate • Scale</small></span>
+    </a>
+
+    <div class="lk" id="nav-links">
+      <a href="/" id="nav-home">Home</a>
+      <a href="/academy" class="on" id="nav-academy">Academy</a>
+      <a href="/technologies" id="nav-tech">Technologies</a>
+      <a href="/innovation-lab" id="nav-inno">Innovation Lab</a>
+      <a href="/startups" id="nav-startups">Startups</a>
+      <a href="/for-business" id="nav-business">For Business</a>
+      <a href="/about" id="nav-about">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn" data-enq="Academy Counselling" id="nav-enquire-btn">Enquire Now</button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Programs Page Hero Banner -->
+  <header class="prog-header" id="prog-hero">
+    <div style="max-width:1240px;margin:auto;">
+      <a href="/academy#ring" class="hero-back-btn" id="hero-back-link">
+        <span style="font-size:18px;">←</span> Choose Another Program (Academy 3D Ring)
+      </a>
+      <div class="badge-track" id="track-badge">
+        <span id="track-icon">🎓</span>
+        <span id="track-name">Program Catalog</span>
+      </div>
+      <h1 id="track-title">Course Catalog</h1>
+      <p id="track-desc">
+        Explore practical curriculum designed to build in-demand skills with live projects, mentors and recognized certifications.
+      </p>
+    </div>
+  </header>
+
+  <!-- Filter & Category Tabs Bar -->
+  <div class="filter-bar">
+    <div class="filter-container">
+      <div class="program-bar-left">
+        <div class="current-program-badge" id="program-active-badge">
+          <span class="badge-icon" id="badge-icon-letter">S</span>
+          <span id="badge-program-title">School Programs</span>
+        </div>
+        <a href="/academy#ring" class="switch-program-link">← Choose Other Programs (3D Moving Ring)</a>
+      </div>
+      <div class="search-input-box">
+        <i>🔍</i>
+        <input type="text" id="course-search" placeholder="Search courses..." aria-label="Search courses" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Programs Grid Body -->
+  <main class="programs-body">
+    <!-- Sub-group filters e.g. Class 5-7, Class 8-10, B.Tech, BCA -->
+    <div class="group-chips" id="group-chips"></div>
+
+    <!-- Courses Grid -->
+    <div class="grid" id="courses-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+      <!-- Skeletons loaded initially -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="g">
+      <div>
+        <h4 style="font-size:22px;">OD AI HUB</h4>
+        <p style="margin:4px 0 12px;color:#8fa5d8;">Learn • Build • Innovate • Scale</p>
+        A stronger Odisha through AI
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <a href="/">Home</a>
+        <a href="/academy">Academy</a>
+        <a href="/technologies">Technologies</a>
+        <a href="/innovation-lab">Innovation Lab</a>
+        <a href="/startups">Startups</a>
+        <a href="/for-business">For Business</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="/academy#why">FAQs</a>
+        <a href="javascript:void(0)" onclick="openEnquiryModal('Admissions Counselling')">Admissions</a>
+        <a href="javascript:void(0)" onclick="toast('Certificate verification portal coming soon.')">Certificate verification</a>
+      </div>
+      <div>
+        <h4>Connect with us</h4>
+        OD AI HUB<br />
+        Berhampur, Ganjam, Odisha, India<br />
+        <a href="mailto:info@odaihub.in" style="margin-top:6px;">info@odaihub.in</a>
+      </div>
+    </div>
+    <div class="c">
+      © 2026 OD AI HUB. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Enquiry Modal -->
+  <div class="md" id="md" hidden>
+    <form class="mc" id="mc"></form>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="/website/js/assets.js"></script>
+  <script src="/website/js/api.js"></script>
+  <script src="/website/js/enquiry.js"></script>
+  <script>
+    let allCategories = [];
+    let currentCategorySlug = 'school';
+    let currentGroupFilter = 'All';
+    let loadedCourses = [];
+
+    // Parse URL parameter e.g. /programs?category=school
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialSlug = urlParams.get('category') || 'school';
+
+    async function initProgramsPage() {
+      // 1. Fetch categories
+      allCategories = await window.odApi.getCategories();
+      if (!allCategories || !allCategories.length) {
+        allCategories = [
+          { id: 1, slug: 'school', name: 'School Programs', tagline: 'Spark curiosity early.', accent_color: '#0082ff', icon_letter: 'S', description: 'AI, coding, robotics and future skills for Class 5 to 12, taught through play and projects.' },
+          { id: 2, slug: 'diploma', name: 'Diploma Programs', tagline: 'Skills employers want.', accent_color: '#14b8a6', icon_letter: 'D', description: 'Job-oriented technology diplomas for learners who want to start working sooner.' },
+          { id: 3, slug: 'college', name: 'College Programs', tagline: 'Go beyond the syllabus.', accent_color: '#00a352', icon_letter: 'C', description: 'Industry tracks that sit alongside your degree, with real tools and real projects.' },
+          { id: 4, slug: 'non-tech', name: 'Non-Tech Programs', tagline: 'AI for every field.', accent_color: '#ff6a00', icon_letter: 'N', description: 'No coding background needed. Learn how to use AI in your own field and career.' },
+          { id: 5, slug: 'internships', name: 'Internships and Industry Projects', tagline: 'Real work, real experience.', accent_color: '#8a2be2', icon_letter: 'I', description: 'Work on live projects with industry partners and build a portfolio employers notice.' },
+          { id: 6, slug: 'career', name: 'Career and Placement Support', tagline: 'Get ready. Get hired.', accent_color: '#e60026', icon_letter: 'P', description: 'Interview preparation, mock tests, resume building and career guidance to turn skills into a job.' }
+        ];
+      }
+
+      // 2. Load active category (isolated - other programs are not displayed here)
+      await switchCategory(initialSlug, false);
+
+      // Search input handler
+      const searchInput = document.getElementById('course-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          renderCourses();
+        });
+      }
+    }
+
+    async function switchCategory(slug, updateHistory = true) {
+      currentCategorySlug = slug;
+      currentGroupFilter = 'All';
+
+      if (updateHistory) {
+        const newUrl = `${window.location.pathname}?category=${slug}`;
+        window.history.pushState({ category: slug }, '', newUrl);
+      }
+
+      // Update hero banner texts and color
+      const cat = allCategories.find(c => c.slug === slug) || { name: 'Programs', description: 'Explore curriculum' };
+      const accent = cat.accent_color || '#0082ff';
+
+      // Update active program badge
+      const badge = document.getElementById('program-active-badge');
+      if (badge) {
+        badge.style.background = accent;
+        const iconEl = document.getElementById('badge-icon-letter');
+        if (iconEl) iconEl.textContent = cat.icon_letter || '🎓';
+        const titleEl = document.getElementById('badge-program-title');
+        if (titleEl) titleEl.textContent = cat.name;
+      }
+      const searchInput = document.getElementById('course-search');
+      if (searchInput) {
+        searchInput.placeholder = `Search within ${cat.name}...`;
+      }
+
+      const heroEl = document.getElementById('prog-hero');
+      if (heroEl) {
+        // Convert accent hex to slightly darker variant for gradient
+        heroEl.style.setProperty('--accent-mid', accent + 'dd');
+        heroEl.style.setProperty('--accent-dark', accent + '88');
+      }
+      document.getElementById('track-badge').style.borderColor = accent;
+      document.getElementById('track-badge').style.background = accent + '22';
+      document.getElementById('track-icon').textContent = cat.icon_letter || '🎓';
+      document.getElementById('track-name').textContent = `${cat.name} Catalog`;
+      document.getElementById('track-title').textContent = `${cat.name} — Course Catalog`;
+      document.getElementById('track-desc').textContent = cat.description || cat.tagline || '';
+
+      // Show skeleton loader
+      const grid = document.getElementById('courses-grid');
+      grid.innerHTML = Array(4).fill(0).map(() => `
+        <div class="course-card" style="min-height:260px;">
+          <div class="skel" style="height:20px;width:50%;margin-bottom:12px;"></div>
+          <div class="skel" style="height:26px;width:80%;margin-bottom:16px;"></div>
+          <div class="skel" style="height:60px;width:100%;margin-bottom:16px;"></div>
+          <div class="skel" style="height:36px;width:100%;margin-top:auto;"></div>
+        </div>
+      `).join('');
+
+      // If career category, render career support tracks directly
+      if (slug === 'career') {
+        loadedCourses = [];
+        const chipsContainer = document.getElementById('group-chips');
+        if (chipsContainer) chipsContainer.style.display = 'none';
+        renderCareerTracks(cat, accent);
+        return;
+      }
+
+      // Fetch courses from API
+      loadedCourses = await window.odApi.getCategoryCourses(slug);
+
+      // Render group chips (audience/class/degree filters)
+      const groups = ['All', ...new Set(loadedCourses.map(c => c.group_label).filter(Boolean))];
+      const chipsContainer = document.getElementById('group-chips');
+      if (groups.length > 1) {
+        chipsContainer.innerHTML = groups.map(g => `
+          <button class="chp ${g === currentGroupFilter ? 'on' : ''}" 
+                  style="--c:${accent};"
+                  onclick="switchGroupFilter('${g}')">
+            ${g}
+          </button>
+        `).join('');
+        chipsContainer.style.display = 'flex';
+      } else {
+        chipsContainer.innerHTML = '';
+        chipsContainer.style.display = 'none';
+      }
+
+      renderCourses();
+    }
+
+    function switchGroupFilter(group) {
+      currentGroupFilter = group;
+      const cat = allCategories.find(c => c.slug === currentCategorySlug) || {};
+      const chipsContainer = document.getElementById('group-chips');
+      if (chipsContainer) {
+        chipsContainer.querySelectorAll('.chp').forEach(btn => {
+          btn.classList.toggle('on', btn.textContent.trim() === group);
+        });
+      }
+      renderCourses();
+    }
+
+    function renderCareerTracks(cat, accent) {
+      const grid = document.getElementById('courses-grid');
+      document.title = `${cat.name || 'Career Support'} – OD AI Academy`;
+      const careerFeatures = [
+        ['Interview Preparation', 'Mock interviews with industry mentors, curated technical question banks, and actionable feedback.', '🎙️'],
+        ['Mock Hiring Tests', 'Aptitude, live coding, and system design tests designed to mirror Tier-1 company hiring rounds.', '📝'],
+        ['Resume & Portfolio Review', 'Create an ATS-friendly, project-first resume and a live GitHub portfolio that recruiters notice.', '💼'],
+        ['1-on-1 Career Mentorship', 'Private sessions with senior engineers to plan your target roles, roadmap, and transition steps.', '🎯']
+      ];
+      grid.innerHTML = careerFeatures.map((f, i) => `
+        <article class="course-card" style="--track-color:${accent};animation-delay:${i * 40}ms;">
+          <div class="card-top-badges">
+            <span class="cat-badge" style="background:${accent}18;color:${accent};">Placement Track</span>
+            <span class="status-badge">✓ Active Support</span>
+          </div>
+          <h3 class="course-title" style="cursor:default;margin-top:8px;">
+            ${f[2]} ${f[0]}
+          </h3>
+          <p class="course-desc" style="margin-top:8px;">
+            ${f[1]}
+          </p>
+          <div class="card-footer" style="padding-top:16px;">
+            <button class="btn" style="background:${accent};width:100%;justify-content:center;" onclick="openEnquiryModal('${f[0]} Consultation')">
+              Book Free Career Session →
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderCourses() {
+      const grid = document.getElementById('courses-grid');
+      const cat = allCategories.find(c => c.slug === currentCategorySlug) || {};
+      const accent = cat.accent_color || '#0082ff';
+      document.title = `${cat.name || 'Programs'} – OD AI Academy Course Catalog`;
+      const query = (document.getElementById('course-search')?.value || '').toLowerCase().trim();
+
+      let list = loadedCourses || [];
+
+      // Filter by group chip
+      if (currentGroupFilter !== 'All') {
+        list = list.filter(c => c.group_label === currentGroupFilter);
+      }
+
+      // Filter by search query
+      if (query) {
+        list = list.filter(c => 
+          (c.title && c.title.toLowerCase().includes(query)) ||
+          (c.short_description && c.short_description.toLowerCase().includes(query)) ||
+          (c.target_audience && c.target_audience.toLowerCase().includes(query)) ||
+          (c.group_label && c.group_label.toLowerCase().includes(query))
+        );
+      }
+
+      if (!list.length) {
+        grid.innerHTML = `
+          <div style="grid-column:1/-1;text-align:center;padding:64px 20px;background:#fff;border-radius:16px;border:1.5px solid var(--ln);">
+            <div style="font-size:36px;margin-bottom:12px;">📚</div>
+            <h3 style="font-size:20px;font-weight:800;color:var(--navy);margin-bottom:8px;">No courses found</h3>
+            <p style="color:var(--mu);font-size:14.5px;max-width:44ch;margin:0 auto 20px;">
+              ${query ? 'No courses match your search criteria. Try a different search keyword.' : 'We are currently preparing more programs for this track.'}
+            </p>
+            <button class="btn" style="background:${accent};" onclick="openEnquiryModal('${cat.name || 'Academy'} Programs')">
+              Enquire about upcoming batches →
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = list.map((c, i) => `
+        <article class="course-card" style="--track-color:${accent};animation-delay:${i * 40}ms;">
+          <div class="card-top-badges">
+            <span class="cat-badge">${c.category_name || cat.name}</span>
+            <span class="status-badge">✓ Active</span>
+          </div>
+
+          <h3 class="course-title" onclick="openCourseDrawer('${c.slug}')" title="Click to view details">
+            ${c.title}
+          </h3>
+
+          ${c.group_label || c.target_audience ? `
+            <div class="course-for">
+              For: ${c.group_label || c.target_audience}
+            </div>
+          ` : ''}
+
+          <div class="course-meta">
+            <span>⏱ ${c.duration_formatted || 'Flexible'}</span>
+            <span style="text-transform:capitalize;">📍 ${c.mode || 'online'}</span>
+            ${c.batch_size ? `<span>👥 ${c.batch_size} seats</span>` : ''}
+          </div>
+
+          <p class="course-desc">
+            ${c.short_description || ''}
+          </p>
+
+          <div class="card-footer">
+            <div class="card-pricing">
+              <b>${c.price_display}</b>
+              ${c.discount_display ? `<s>${c.discount_display}</s>` : ''}
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn o" style="padding:6px 12px;font-size:12.5px;border-color:var(--ln);color:var(--navy);" onclick="openCourseDrawer('${c.slug}')">
+                Details
+              </button>
+              <button class="btn" style="padding:6px 14px;font-size:12.5px;background:${accent};" data-enq="${c.title}" data-course-id="${c.id}">
+                Enquire
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', (e) => {
+      const slug = e.state?.category || new URLSearchParams(window.location.search).get('category') || 'school';
+      switchCategory(slug, false);
+    });
+
+    // Run init
+    initProgramsPage();
+  </script>
+</body>
+</html>
